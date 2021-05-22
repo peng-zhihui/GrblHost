@@ -33,7 +33,7 @@ LineSegment::LineSegment(QVector3D a, QVector3D b, int num) : LineSegment()
     m_lineNumber = num;
 }
 
-LineSegment::LineSegment(LineSegment* initial)
+LineSegment::LineSegment(LineSegment *initial)
 {
     m_toolhead = initial->getToolhead();
     m_isZMovement = initial->isZMovement();
@@ -55,7 +55,8 @@ LineSegment::~LineSegment()
 
 }
 
-int LineSegment::getLineNumber() {
+int LineSegment::getLineNumber()
+{
     return m_lineNumber;
 }
 
@@ -79,7 +80,8 @@ QList<double> LineSegment::getPoints()
     return points;
 }
 
-QVector3D &LineSegment::getStart() {
+QVector3D &LineSegment::getStart()
+{
     return this->m_first;
 }
 
@@ -88,7 +90,8 @@ void LineSegment::setStart(QVector3D vector)
     m_first = vector;
 }
 
-QVector3D &LineSegment::getEnd() {
+QVector3D &LineSegment::getEnd()
+{
     return this->m_second;
 }
 
@@ -97,7 +100,8 @@ void LineSegment::setEnd(QVector3D vector)
     m_second = vector;
 }
 
-void LineSegment::setToolHead(int head) {
+void LineSegment::setToolHead(int head)
+{
     this->m_toolhead = head;
 }
 
@@ -106,7 +110,8 @@ int LineSegment::getToolhead()
     return m_toolhead;
 }
 
-void LineSegment::setSpeed(double s) {
+void LineSegment::setSpeed(double s)
+{
     this->m_speed = s;
 }
 
@@ -115,27 +120,33 @@ double LineSegment::getSpeed()
     return m_speed;
 }
 
-void LineSegment::setIsZMovement(bool isZ) {
+void LineSegment::setIsZMovement(bool isZ)
+{
     this->m_isZMovement = isZ;
 }
 
-bool LineSegment::isZMovement() {
+bool LineSegment::isZMovement()
+{
     return m_isZMovement;
 }
 
-void LineSegment::setIsArc(bool isA) {
+void LineSegment::setIsArc(bool isA)
+{
     this->m_isArc = isA;
 }
 
-bool LineSegment::isArc() {
+bool LineSegment::isArc()
+{
     return m_isArc;
 }
 
-void LineSegment::setIsFastTraverse(bool isF) {
+void LineSegment::setIsFastTraverse(bool isF)
+{
     this->m_isFastTraverse = isF;
 }
 
-bool LineSegment::isFastTraverse() {
+bool LineSegment::isFastTraverse()
+{
     return this->m_isFastTraverse;
 }
 
@@ -159,6 +170,7 @@ void LineSegment::setDrawn(bool drawn)
 {
     m_drawn = drawn;
 }
+
 bool LineSegment::isMetric() const
 {
     return m_isMetric;
@@ -168,6 +180,7 @@ void LineSegment::setIsMetric(bool isMetric)
 {
     m_isMetric = isMetric;
 }
+
 bool LineSegment::isAbsolute() const
 {
     return m_isAbsolute;
@@ -177,6 +190,7 @@ void LineSegment::setIsAbsolute(bool isAbsolute)
 {
     m_isAbsolute = isAbsolute;
 }
+
 bool LineSegment::isHightlight() const
 {
     return m_isHightlight;

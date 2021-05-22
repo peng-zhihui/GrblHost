@@ -14,13 +14,16 @@ public:
     void setEditable(bool editable);
 
     void setCurrentNext();
+
     void setCurrentPrevious();
 
     void setItems(QStringList items);
+
     QStringList items();
 
 protected:
     void keyPressEvent(QKeyEvent *e);
+
     void keyReleaseEvent(QKeyEvent *e);
 
 private:

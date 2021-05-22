@@ -250,98 +250,98 @@ public:
         icon.addFile(QString::fromUtf8(":/images/candle_256.png"), QSize(), QIcon::Normal, QIcon::Off);
         frmMain->setWindowIcon(icon);
         frmMain->setStyleSheet(QString::fromUtf8("/*QWidget {\n"
-"	font-size: 9pt;\n"
-"}*/\n"
-"\n"
-"QSpinBox, QDoubleSpinBox {\n"
-"	padding-top: 1px;\n"
-"	padding-bottom: 1px;\n"
-"}\n"
-"\n"
-"QGroupBox {\n"
-"}\n"
-"\n"
-"QGroupBox:disabled {\n"
-"	color: palette(shadow);\n"
-"}\n"
-"\n"
-"QGroupBox[overrided=\"true\"] {\n"
-"	color: red;\n"
-"}\n"
-"\n"
-"QGroupBox[overrided=\"false\"] {\n"
-"	color: palette(windowtext);\n"
-"}\n"
-"\n"
-"QGroupBox[checkable=\"true\"]::title {\n"
-"	margin-top: 1px;\n"
-"}\n"
-"\n"
-"QGroupBox[checkable=\"true\"]::indicator {\n"
-"	padding: 0 -2 -0 2;\n"
-"	width: 13;\n"
-"	height: 13;\n"
-"}\n"
-"\n"
-"QGroupBox[checkable=\"true\"]::indicator:checked {	\n"
-"	image: url(:/images/collapse.png);\n"
-"}\n"
-"\n"
-"QGroupBox[checkable=\"true\"]::indicator:unchecked {	\n"
-"	image: url(:/images/expand.png);\n"
-"}\n"
-"\n"
-"QFrame#frameManualControlXY,#frameManualControlZ {\n"
-"	border: 1px solid lightgray;\n"
-"	border-radius: 4px;\n"
-"}\n"
-"\n"
-"QSplitter::handle {\n"
-"	background-repeat: no-repeat;\n"
-"	background-position: center center;\n"
-"}\n"
-"\n"
-"QSpli"
-                        "tter::handle:vertical {\n"
-"	background-image: url(\":/images/handle_horizontal.png\");\n"
-"}\n"
-"/*\n"
-"QSplitter::handle:horizontal {\n"
-"	background-image: url(\":/images/handle_vertical.png\");\n"
-"}\n"
-"*/\n"
-"QTableView {\n"
-"	selection-background-color: #cdcdff;\n"
-"	selection-color: rgb(0, 0, 0);\n"
-"}\n"
-"\n"
-"QSlider::horizontal {\n"
-"	padding-top: 1px;\n"
-"	padding-bottom: 1px;\n"
-"}\n"
-"\n"
-"QSlider::groove:horizontal {\n"
-"    border: 1px solid #999999;\n"
-"    height: 2px; \n"
-"    background: #8f8f91;\n"
-"    margin: 2px 0;\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal {	\n"
-"	background-image: url(:/images/handle2s.png);\n"
-"    border: 0px;\n"
-"    width: 16px;\n"
-"    margin: -7px 0; \n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:hover {\n"
-"	background-image: url(:/images/handle2sh.png);\n"
-"}\n"
-"\n"
-"/*QSlider::sub-page:horizontal {\n"
-"    background: red;\n"
-"	margin: 1px 0;\n"
-"}*/"));
+                                                 "	font-size: 9pt;\n"
+                                                 "}*/\n"
+                                                 "\n"
+                                                 "QSpinBox, QDoubleSpinBox {\n"
+                                                 "	padding-top: 1px;\n"
+                                                 "	padding-bottom: 1px;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QGroupBox {\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QGroupBox:disabled {\n"
+                                                 "	color: palette(shadow);\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QGroupBox[overrided=\"true\"] {\n"
+                                                 "	color: red;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QGroupBox[overrided=\"false\"] {\n"
+                                                 "	color: palette(windowtext);\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QGroupBox[checkable=\"true\"]::title {\n"
+                                                 "	margin-top: 1px;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QGroupBox[checkable=\"true\"]::indicator {\n"
+                                                 "	padding: 0 -2 -0 2;\n"
+                                                 "	width: 13;\n"
+                                                 "	height: 13;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QGroupBox[checkable=\"true\"]::indicator:checked {	\n"
+                                                 "	image: url(:/images/collapse.png);\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QGroupBox[checkable=\"true\"]::indicator:unchecked {	\n"
+                                                 "	image: url(:/images/expand.png);\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QFrame#frameManualControlXY,#frameManualControlZ {\n"
+                                                 "	border: 1px solid lightgray;\n"
+                                                 "	border-radius: 4px;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QSplitter::handle {\n"
+                                                 "	background-repeat: no-repeat;\n"
+                                                 "	background-position: center center;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QSpli"
+                                                 "tter::handle:vertical {\n"
+                                                 "	background-image: url(\":/images/handle_horizontal.png\");\n"
+                                                 "}\n"
+                                                 "/*\n"
+                                                 "QSplitter::handle:horizontal {\n"
+                                                 "	background-image: url(\":/images/handle_vertical.png\");\n"
+                                                 "}\n"
+                                                 "*/\n"
+                                                 "QTableView {\n"
+                                                 "	selection-background-color: #cdcdff;\n"
+                                                 "	selection-color: rgb(0, 0, 0);\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QSlider::horizontal {\n"
+                                                 "	padding-top: 1px;\n"
+                                                 "	padding-bottom: 1px;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QSlider::groove:horizontal {\n"
+                                                 "    border: 1px solid #999999;\n"
+                                                 "    height: 2px; \n"
+                                                 "    background: #8f8f91;\n"
+                                                 "    margin: 2px 0;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QSlider::handle:horizontal {	\n"
+                                                 "	background-image: url(:/images/handle2s.png);\n"
+                                                 "    border: 0px;\n"
+                                                 "    width: 16px;\n"
+                                                 "    margin: -7px 0; \n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QSlider::handle:horizontal:hover {\n"
+                                                 "	background-image: url(:/images/handle2sh.png);\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "/*QSlider::sub-page:horizontal {\n"
+                                                 "    background: red;\n"
+                                                 "	margin: 1px 0;\n"
+                                                 "}*/"));
         actFileOpen = new QAction(frmMain);
         actFileOpen->setObjectName(QString::fromUtf8("actFileOpen"));
         actFileExit = new QAction(frmMain);
@@ -462,7 +462,9 @@ public:
         font.setPointSize(9);
         tblProgram->setFont(font);
         tblProgram->setContextMenuPolicy(Qt::CustomContextMenu);
-        tblProgram->setEditTriggers(QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked);
+        tblProgram->setEditTriggers(
+            QAbstractItemView::AnyKeyPressed | QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed |
+            QAbstractItemView::SelectedClicked);
         tblProgram->setSelectionMode(QAbstractItemView::ContiguousSelection);
         tblProgram->setSelectionBehavior(QAbstractItemView::SelectRows);
         tblProgram->setGridStyle(Qt::DashLine);
@@ -1308,8 +1310,8 @@ public:
         splitPanels = new QSplitter(centralWidget);
         splitPanels->setObjectName(QString::fromUtf8("splitPanels"));
         splitPanels->setStyleSheet(QString::fromUtf8("QSplitter::handle {\n"
-"	background-image: url(\":/images/handle_small.png\");\n"
-"}"));
+                                                     "	background-image: url(\":/images/handle_small.png\");\n"
+                                                     "}"));
         splitPanels->setOrientation(Qt::Vertical);
         splitPanels->setHandleWidth(10);
         splitPanels->setChildrenCollapsible(false);
@@ -1440,7 +1442,8 @@ public:
         cmdZPlus->setSizePolicy(sizePolicy6);
         cmdZPlus->setMinimumSize(QSize(44, 44));
         QIcon icon22;
-        icon22.addFile(QString::fromUtf8(":/images/1401562699_icon-arrow-up-b.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon22.addFile(QString::fromUtf8(":/images/1401562699_icon-arrow-up-b.png"), QSize(), QIcon::Normal,
+                       QIcon::Off);
         cmdZPlus->setIcon(icon22);
         cmdZPlus->setIconSize(QSize(28, 28));
 
@@ -1462,7 +1465,8 @@ public:
         cmdZMinus->setSizePolicy(sizePolicy6);
         cmdZMinus->setMinimumSize(QSize(44, 44));
         QIcon icon23;
-        icon23.addFile(QString::fromUtf8(":/images/1401562699_icon-arrow-down-b.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon23.addFile(QString::fromUtf8(":/images/1401562699_icon-arrow-down-b.png"), QSize(), QIcon::Normal,
+                       QIcon::Off);
         cmdZMinus->setIcon(icon23);
         cmdZMinus->setIconSize(QSize(28, 28));
 
@@ -1619,8 +1623,8 @@ public:
         cboCommand = new ComboBox(grpConsole);
         cboCommand->setObjectName(QString::fromUtf8("cboCommand"));
         cboCommand->setStyleSheet(QString::fromUtf8("padding-top: 3;\n"
-"padding-bottom: 3;\n"
-"padding-right: 8;"));
+                                                    "padding-bottom: 3;\n"
+                                                    "padding-right: 8;"));
         cboCommand->setEditable(true);
         cboCommand->setMaxVisibleItems(5);
         cboCommand->setMaxCount(10);
@@ -1971,8 +1975,11 @@ public:
 
 };
 
-namespace Ui {
-    class frmMain: public Ui_frmMain {};
+namespace Ui
+{
+    class frmMain : public Ui_frmMain
+    {
+    };
 } // namespace Ui
 
 QT_END_NAMESPACE

@@ -15,7 +15,8 @@ frmAbout::frmAbout(QWidget *parent) :
 
     QFile file(qApp->applicationDirPath() + "/LICENSE");
 
-    if (file.open(QIODevice::ReadOnly)) {
+    if (file.open(QIODevice::ReadOnly))
+    {
         ui->txtLicense->setPlainText(file.readAll());
     }
 }

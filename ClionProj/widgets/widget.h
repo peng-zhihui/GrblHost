@@ -8,11 +8,12 @@
 
 class Widget : public QWidget
 {
-    Q_OBJECT
+Q_OBJECT
 public:
     explicit Widget(QWidget *parent = 0);
 
 signals:
+
     void sizeChanged(QSize newSize);
 
 protected:

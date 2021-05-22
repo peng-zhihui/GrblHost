@@ -12,10 +12,11 @@ GroupBox::GroupBox(QWidget *parent) : QGroupBox(parent)
 }
 
 void GroupBox::mouseMoveEvent(QMouseEvent *event)
-{    
+{
     QGroupBox::mouseMoveEvent(event);
 
-    if (!m_pressedPos.isNull()) {
+    if (!m_pressedPos.isNull())
+    {
         QPoint delta = event->globalPos() - m_pressedPos;
         emit mouseMoved(delta.x(), delta.y());
     }

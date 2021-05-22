@@ -33,7 +33,8 @@ void ColorPicker::onButtonClicked()
 {
     QColor color = QColorDialog::getColor(m_color, this);
 
-    if (color.isValid()) {
+    if (color.isValid())
+    {
         setColor(color);
         emit colorSelected(color);
     }

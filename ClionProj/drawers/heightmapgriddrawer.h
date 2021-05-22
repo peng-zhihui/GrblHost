@@ -14,18 +14,23 @@ public:
     HeightMapGridDrawer();
 
     QPointF gridSize() const;
+
     void setGridSize(const QPointF &gridSize);
 
     QRectF borderRect() const;
+
     void setBorderRect(const QRectF &borderRect);
 
     double zTop() const;
+
     void setZTop(double zTop);
 
     double zBottom() const;
+
     void setZBottom(double zBottom);
 
     QAbstractTableModel *model() const;
+
     void setModel(QAbstractTableModel *model);
 
 protected:

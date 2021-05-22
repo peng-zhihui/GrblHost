@@ -203,19 +203,19 @@ public:
             frmSettings->setObjectName(QString::fromUtf8("frmSettings"));
         frmSettings->resize(555, 715);
         frmSettings->setStyleSheet(QString::fromUtf8("/*QWidget {\n"
-"	font-size: 9pt;\n"
-"}*/\n"
-"\n"
-"QSpinBox, QDoubleSpinBox {\n"
-"	padding-top: 1px;\n"
-"	padding-bottom: 1px;\n"
-"}\n"
-"\n"
-"QGroupBox {\n"
-"	border: none;\n"
-"	padding-top: 16;\n"
-"	font-weight: bold;\n"
-"}"));
+                                                     "	font-size: 9pt;\n"
+                                                     "}*/\n"
+                                                     "\n"
+                                                     "QSpinBox, QDoubleSpinBox {\n"
+                                                     "	padding-top: 1px;\n"
+                                                     "	padding-bottom: 1px;\n"
+                                                     "}\n"
+                                                     "\n"
+                                                     "QGroupBox {\n"
+                                                     "	border: none;\n"
+                                                     "	padding-top: 16;\n"
+                                                     "	font-weight: bold;\n"
+                                                     "}"));
         frmSettings->setModal(true);
         verticalLayout_17 = new QVBoxLayout(frmSettings);
         verticalLayout_17->setObjectName(QString::fromUtf8("verticalLayout_17"));
@@ -224,8 +224,8 @@ public:
         listCategories = new QListWidget(frmSettings);
         listCategories->setObjectName(QString::fromUtf8("listCategories"));
         listCategories->setStyleSheet(QString::fromUtf8("QListWidget::item {\n"
-"	height: 1.75em;\n"
-"}"));
+                                                        "	height: 1.75em;\n"
+                                                        "}"));
         listCategories->setSpacing(1);
 
         horizontalLayout_2->addWidget(listCategories);
@@ -721,7 +721,7 @@ public:
         cboFps->addItem(QString());
         cboFps->addItem(QString());
         cboFps->setObjectName(QString::fromUtf8("cboFps"));
-        cboFps->setInputMethodHints(Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly);
+        cboFps->setInputMethodHints(Qt::ImhDigitsOnly | Qt::ImhFormattedNumbersOnly);
         cboFps->setEditable(true);
 
         horizontalLayout_7->addWidget(cboFps);
@@ -1182,7 +1182,9 @@ public:
         cboBaud->setCurrentText(QApplication::translate("frmSettings", "9600", nullptr));
         grpConnection_2->setTitle(QApplication::translate("frmSettings", "Sender", nullptr));
         chkIgnoreErrors->setText(QApplication::translate("frmSettings", "Ignore error responses", nullptr));
-        chkAutoLine->setText(QApplication::translate("frmSettings", "Automatically set parser state before sending from selected line", nullptr));
+        chkAutoLine->setText(
+            QApplication::translate("frmSettings", "Automatically set parser state before sending from selected line",
+                                    nullptr));
         grpGRBL->setTitle(QApplication::translate("frmSettings", "Machine information", nullptr));
         label_11->setText(QApplication::translate("frmSettings", "Status query period:", nullptr));
         cboUnits->setItemText(0, QApplication::translate("frmSettings", "mm", nullptr));
@@ -1197,22 +1199,28 @@ public:
         label_35->setText(QApplication::translate("frmSettings", "max.:", nullptr));
         groupBox_2->setTitle(QApplication::translate("frmSettings", "Control", nullptr));
         label_17->setText(QApplication::translate("frmSettings", "Probe commands:", nullptr));
-        txtTouchCommand->setPlaceholderText(QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
+        txtTouchCommand->setPlaceholderText(
+            QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
         label_33->setText(QApplication::translate("frmSettings", "Safe position commands:", nullptr));
-        txtSafeCommand->setPlaceholderText(QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
+        txtSafeCommand->setPlaceholderText(
+            QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
         chkMoveOnRestore->setText(QApplication::translate("frmSettings", "\"Restore origin\" moves tool in:", nullptr));
         cboRestoreMode->setItemText(0, QApplication::translate("frmSettings", "Plane", nullptr));
         cboRestoreMode->setItemText(1, QApplication::translate("frmSettings", "Space", nullptr));
 
         groupBox_5->setTitle(QApplication::translate("frmSettings", "User commands", nullptr));
         label_34->setText(QApplication::translate("frmSettings", "Button 1:", nullptr));
-        txtUserCommand0->setPlaceholderText(QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
+        txtUserCommand0->setPlaceholderText(
+            QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
         label_36->setText(QApplication::translate("frmSettings", "Button 2:", nullptr));
-        txtUserCommand1->setPlaceholderText(QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
+        txtUserCommand1->setPlaceholderText(
+            QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
         label_37->setText(QApplication::translate("frmSettings", "Button 3:", nullptr));
-        txtUserCommand2->setPlaceholderText(QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
+        txtUserCommand2->setPlaceholderText(
+            QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
         label_39->setText(QApplication::translate("frmSettings", "Button 4:", nullptr));
-        txtUserCommand3->setPlaceholderText(QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
+        txtUserCommand3->setPlaceholderText(
+            QApplication::translate("frmSettings", "Command 1; command 2; ...", nullptr));
         groupBox_4->setTitle(QApplication::translate("frmSettings", "Heightmap", nullptr));
         label_38->setText(QApplication::translate("frmSettings", "Heightmap probing feed:", nullptr));
         grpParser->setTitle(QApplication::translate("frmSettings", "Parser", nullptr));
@@ -1247,7 +1255,8 @@ public:
         lblToolAngle->setText(QApplication::translate("frmSettings", "Angle:", nullptr));
         lblToolLength->setText(QApplication::translate("frmSettings", "Length:", nullptr));
         grpConsole->setTitle(QApplication::translate("frmSettings", "Console", nullptr));
-        chkShowProgramCommands->setText(QApplication::translate("frmSettings", "Show G-code program commands", nullptr));
+        chkShowProgramCommands->setText(
+            QApplication::translate("frmSettings", "Show G-code program commands", nullptr));
         chkShowUICommands->setText(QApplication::translate("frmSettings", "Show UI commands", nullptr));
         chkAutocompletion->setText(QApplication::translate("frmSettings", "Command auto-completion", nullptr));
         grpPanels->setTitle(QApplication::translate("frmSettings", "Panels", nullptr));
@@ -1286,8 +1295,11 @@ public:
 
 };
 
-namespace Ui {
-    class frmSettings: public Ui_frmSettings {};
+namespace Ui
+{
+    class frmSettings : public Ui_frmSettings
+    {
+    };
 } // namespace Ui
 
 QT_END_NAMESPACE

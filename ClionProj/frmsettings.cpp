@@ -21,13 +21,15 @@ frmSettings::frmSettings(QWidget *parent) :
     ui->cboFps->setValidator(&m_intValidator);
     ui->cboFontSize->setValidator(&m_intValidator);
 
-    foreach (QGroupBox *box, this->findChildren<QGroupBox*>()) {
-        ui->listCategories->addItem(box->title());
-        ui->listCategories->item(ui->listCategories->count() - 1)->setData(Qt::UserRole, box->objectName());
-    }
+        foreach (QGroupBox *box, this->findChildren<QGroupBox *>())
+        {
+            ui->listCategories->addItem(box->title());
+            ui->listCategories->item(ui->listCategories->count() - 1)->setData(Qt::UserRole, box->objectName());
+        }
 
     ui->listCategories->item(0)->setSelected(true);
-    connect(ui->scrollSettings->verticalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(onScrollBarValueChanged(int)));
+    connect(ui->scrollSettings->verticalScrollBar(), SIGNAL(valueChanged(int)), this,
+            SLOT(onScrollBarValueChanged(int)));
 
     searchPorts();
 }
@@ -45,55 +47,56 @@ int frmSettings::exec()
     m_storedCombos.clear();
     m_storedColors.clear();
 
-    foreach (QAbstractSpinBox* sb, this->findChildren<QAbstractSpinBox*>())
-    {
-        m_storedValues.append(sb->property("value").toDouble());
-    }
+        foreach (QAbstractSpinBox *sb, this->findChildren<QAbstractSpinBox *>())
+        {
+            m_storedValues.append(sb->property("value").toDouble());
+        }
 
-    foreach (QAbstractButton* cb, this->findChildren<QAbstractButton*>())
-    {
-        m_storedChecks.append(cb->isChecked());
-    }
+        foreach (QAbstractButton *cb, this->findChildren<QAbstractButton *>())
+        {
+            m_storedChecks.append(cb->isChecked());
+        }
 
-    foreach (QComboBox* cb, this->findChildren<QComboBox*>())
-    {
-        m_storedCombos.append(cb->currentText());
-    }
+        foreach (QComboBox *cb, this->findChildren<QComboBox *>())
+        {
+            m_storedCombos.append(cb->currentText());
+        }
 
-    foreach (ColorPicker* pick, this->findChildren<ColorPicker*>())
-    {
-        m_storedColors.append(pick->color());
-    }
+        foreach (ColorPicker *pick, this->findChildren<ColorPicker *>())
+        {
+            m_storedColors.append(pick->color());
+        }
 
     return QDialog::exec();
 }
 
 void frmSettings::undo()
 {
-    foreach (QAbstractSpinBox* sb, this->findChildren<QAbstractSpinBox*>())
-    {
-        sb->setProperty("value", m_storedValues.takeFirst());
-    }
+        foreach (QAbstractSpinBox *sb, this->findChildren<QAbstractSpinBox *>())
+        {
+            sb->setProperty("value", m_storedValues.takeFirst());
+        }
 
-    foreach (QAbstractButton* cb, this->findChildren<QAbstractButton*>())
-    {
-        cb->setChecked(m_storedChecks.takeFirst());
-    }
-    foreach (QComboBox* cb, this->findChildren<QComboBox*>())
-    {
-        cb->setCurrentText(m_storedCombos.takeFirst());
-    }
-    foreach (ColorPicker* pick, this->findChildren<ColorPicker*>())
-    {
-        pick->setColor(m_storedColors.takeFirst());
-    }
+        foreach (QAbstractButton *cb, this->findChildren<QAbstractButton *>())
+        {
+            cb->setChecked(m_storedChecks.takeFirst());
+        }
+        foreach (QComboBox *cb, this->findChildren<QComboBox *>())
+        {
+            cb->setCurrentText(m_storedCombos.takeFirst());
+        }
+        foreach (ColorPicker *pick, this->findChildren<ColorPicker *>())
+        {
+            pick->setColor(m_storedColors.takeFirst());
+        }
 }
 
 void frmSettings::on_listCategories_currentRowChanged(int currentRow)
 {
     // Scroll to selected groupbox
-    QGroupBox *box = this->findChild<QGroupBox*>(ui->listCategories->item(currentRow)->data(Qt::UserRole).toString());
-    if (box) {
+    QGroupBox *box = this->findChild<QGroupBox *>(ui->listCategories->item(currentRow)->data(Qt::UserRole).toString());
+    if (box)
+    {
         ui->scrollSettings->ensureWidgetVisible(box);
     }
 }
@@ -103,10 +106,13 @@ void frmSettings::onScrollBarValueChanged(int value)
     Q_UNUSED(value)
 
     // Search for first full visible groupbox
-    for (int i = 0; i < ui->listCategories->count(); i++) {
-        QGroupBox *box = this->findChild<QGroupBox*>(ui->listCategories->item(i)->data(Qt::UserRole).toString());
-        if (box) {
-            if (!box->visibleRegion().isEmpty() && box->visibleRegion().boundingRect().y() == 0) {
+    for (int i = 0; i < ui->listCategories->count(); i++)
+    {
+        QGroupBox *box = this->findChild<QGroupBox *>(ui->listCategories->item(i)->data(Qt::UserRole).toString());
+        if (box)
+        {
+            if (!box->visibleRegion().isEmpty() && box->visibleRegion().boundingRect().y() == 0)
+            {
                 // Select corresponding item in categories list
                 ui->listCategories->setCurrentRow(i);
                 return;
@@ -502,12 +508,12 @@ void frmSettings::setPanelJog(bool panelJog)
 
 QList<ColorPicker *> frmSettings::colors()
 {
-    return this->findChildren<ColorPicker*>();
+    return this->findChildren<ColorPicker *>();
 }
 
 QColor frmSettings::colors(QString name)
 {
-    ColorPicker *pick = this->findChildren<ColorPicker*>("clp" + name).at(0);
+    ColorPicker *pick = this->findChildren<ColorPicker *>("clp" + name).at(0);
     if (pick) return pick->color(); else return QColor();
 }
 
@@ -555,12 +561,12 @@ void frmSettings::setDrawModeVectors(bool value)
 
 QString frmSettings::userCommands(int index)
 {
-    return this->findChild<QLineEdit*>(QString("txtUserCommand%1").arg(index))->text();
+    return this->findChild<QLineEdit *>(QString("txtUserCommand%1").arg(index))->text();
 }
 
 void frmSettings::setUserCommands(int index, QString commands)
 {
-    this->findChild<QLineEdit*>(QString("txtUserCommand%1").arg(index))->setText(commands);
+    this->findChild<QLineEdit *>(QString("txtUserCommand%1").arg(index))->setText(commands);
 }
 
 bool frmSettings::ignoreErrors()
@@ -594,10 +600,11 @@ void frmSettings::searchPorts()
 {
     ui->cboPort->clear();
 
-    foreach (QSerialPortInfo info ,QSerialPortInfo::availablePorts()) {
+        foreach (QSerialPortInfo info, QSerialPortInfo::availablePorts())
+        {
 //        ui->cboPort->addItem(info.portName());
-        ui->cboPort->insertItem(0, info.portName());
-    }
+            ui->cboPort->insertItem(0, info.portName());
+        }
 }
 
 void frmSettings::on_cmdRefresh_clicked()
@@ -624,7 +631,8 @@ void frmSettings::on_cboToolType_currentIndexChanged(int index)
 void frmSettings::on_cmdDefaults_clicked()
 {
     if (QMessageBox::warning(this, qApp->applicationDisplayName(), tr("Reset settings to default values?"),
-                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel) != QMessageBox::Yes) return;
+                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel) != QMessageBox::Yes)
+        return;
 
     setPort("");
     setBaud(115200);
@@ -671,7 +679,7 @@ void frmSettings::on_cmdDefaults_clicked()
     setPanelOverriding(true);
     setPanelHeightmap(true);
     setPanelJog(true);
-    setPanelSpindle(true);   
+    setPanelSpindle(true);
 
     ui->clpTool->setColor(QColor(255, 153, 0));
 

@@ -18,16 +18,20 @@ public:
     bool isHover();
 
     QColor backColor() const;
+
     void setBackColor(const QColor &backColor);
 
     QColor foreColor() const;
+
     void setForeColor(const QColor &foreColor);
 
     QColor highlightColor() const;
+
     void setHighlightColor(const QColor &highlightColor);
 
 protected:
     void enterEvent(QEvent *);
+
     void leaveEvent(QEvent *);
 
 private:

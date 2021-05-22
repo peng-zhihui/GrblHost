@@ -9,14 +9,16 @@
 
 class ComboBox : public QComboBox
 {
-    Q_OBJECT
+Q_OBJECT
 public:
     explicit ComboBox(QWidget *parent = 0);
+
     ~ComboBox();
 
     void storeText();
 
 signals:
+
     void returnPressed();
 
 protected:

@@ -15,54 +15,87 @@
 class PointSegment
 {
 public:
-    enum planes {
+    enum planes
+    {
         XY,
         ZX,
         YZ
     };
 
     PointSegment();
+
     PointSegment(PointSegment *ps);
+
     PointSegment(const QVector3D *b, int num);
+
     PointSegment(QVector3D *point, int num, QVector3D *center, double radius, bool clockwise);
+
     ~PointSegment();
+
     void setPoint(QVector3D m_point);
-    QVector3D* point();
+
+    QVector3D *point();
 
     QVector<double> points();
+
     void setToolHead(int head);
+
     int getToolhead();
+
     void setLineNumber(int num);
+
     int getLineNumber();
+
     void setSpeed(double s);
+
     double getSpeed();
+
     void setIsZMovement(bool isZ);
+
     bool isZMovement();
+
     void setIsMetric(bool m_isMetric);
+
     bool isMetric();
+
     void setIsArc(bool isA);
+
     bool isArc();
+
     void setIsFastTraverse(bool isF);
+
     bool isFastTraverse();
+
     void setArcCenter(QVector3D *center);
+
     QVector<double> centerPoints();
+
     QVector3D *center();
+
     void setIsClockwise(bool clockwise);
+
     bool isClockwise();
+
     void setRadius(double rad);
+
     double getRadius();
+
     void convertToMetric();
 
     bool isAbsolute() const;
+
     void setIsAbsolute(bool isAbsolute);
 
     planes plane() const;
+
     void setPlane(const planes &plane);
 
     double getSpindleSpeed() const;
+
     void setSpindleSpeed(double spindleSpeed);
 
     double getDwell() const;
+
     void setDwell(double dwell);
 
 private:

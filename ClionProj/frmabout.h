@@ -6,19 +6,22 @@
 
 #include <QDialog>
 
-namespace Ui {
-class frmAbout;
+namespace Ui
+{
+    class frmAbout;
 }
 
 class frmAbout : public QDialog
 {
-    Q_OBJECT
+Q_OBJECT
 
 public:
     explicit frmAbout(QWidget *parent = 0);
+
     ~frmAbout();
 
 private slots:
+
     void on_cmdOk_clicked();
 
     void on_lblAbout_linkActivated(const QString &link);

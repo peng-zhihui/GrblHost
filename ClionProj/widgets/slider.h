@@ -9,11 +9,12 @@
 
 class Slider : public QSlider
 {
-    Q_OBJECT
+Q_OBJECT
 public:
     explicit Slider(QWidget *parent = 0);
 
     int currentValue() const;
+
     void setCurrentValue(int currentValue);
 
 protected:

@@ -42,8 +42,8 @@ public:
             frmAbout->setObjectName(QString::fromUtf8("frmAbout"));
         frmAbout->resize(431, 500);
         frmAbout->setStyleSheet(QString::fromUtf8("QWidget {\n"
-"	font-size: 9pt;\n"
-"}"));
+                                                  "	font-size: 9pt;\n"
+                                                  "}"));
         verticalLayout = new QVBoxLayout(frmAbout);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(9, 9, 9, 9);
@@ -61,7 +61,7 @@ public:
 
         lblAbout = new QLabel(frmAbout);
         lblAbout->setObjectName(QString::fromUtf8("lblAbout"));
-        lblAbout->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        lblAbout->setAlignment(Qt::AlignLeading | Qt::AlignLeft | Qt::AlignVCenter);
 
         horizontalLayout_2->addWidget(lblAbout);
 
@@ -111,15 +111,22 @@ public:
     void retranslateUi(QDialog *frmAbout)
     {
         frmAbout->setWindowTitle(QApplication::translate("frmAbout", "About", nullptr));
-        lblAbout->setText(QApplication::translate("frmAbout", "<html><head/><body><p>Candle<br/>Version: %1<br/>License: GNU GENERAL PUBLIC LICENSE<br/>Visit: <a href=\"https://github.com/Denvi/Candle/\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/Denvi/Candle/<br/></span></a>\302\251 2015-2016 Hayrullin Denis Ravilevich</p></body></html>", nullptr));
-        label_2->setText(QApplication::translate("frmAbout", "<html><head/><body><p><span style=\" font-weight:600;\">The program is provided AS IS without any guarantees or warranty. Use at your own risk.</span></p></body></html>", nullptr));
+        lblAbout->setText(QApplication::translate("frmAbout",
+                                                  "<html><head/><body><p>Candle<br/>Version: %1<br/>License: GNU GENERAL PUBLIC LICENSE<br/>Visit: <a href=\"https://github.com/Denvi/Candle/\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/Denvi/Candle/<br/></span></a>\302\251 2015-2016 Hayrullin Denis Ravilevich</p></body></html>",
+                                                  nullptr));
+        label_2->setText(QApplication::translate("frmAbout",
+                                                 "<html><head/><body><p><span style=\" font-weight:600;\">The program is provided AS IS without any guarantees or warranty. Use at your own risk.</span></p></body></html>",
+                                                 nullptr));
         cmdOk->setText(QApplication::translate("frmAbout", "OK", nullptr));
     } // retranslateUi
 
 };
 
-namespace Ui {
-    class frmAbout: public Ui_frmAbout {};
+namespace Ui
+{
+    class frmAbout : public Ui_frmAbout
+    {
+    };
 } // namespace Ui
 
 QT_END_NAMESPACE

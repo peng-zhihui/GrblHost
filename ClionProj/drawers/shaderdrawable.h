@@ -22,25 +22,35 @@ class ShaderDrawable : protected QOpenGLFunctions
 {
 public:
     explicit ShaderDrawable();
+
     ~ShaderDrawable();
+
     void update();
+
     void draw(QOpenGLShaderProgram *shaderProgram);
 
     bool needsUpdateGeometry() const;
+
     void updateGeometry(QOpenGLShaderProgram *shaderProgram = 0);
 
     virtual QVector3D getSizes();
+
     virtual QVector3D getMinimumExtremes();
+
     virtual QVector3D getMaximumExtremes();
+
     virtual int getVertexCount();
 
     double lineWidth() const;
+
     void setLineWidth(double lineWidth);
 
     bool visible() const;
+
     void setVisible(bool visible);
 
     double pointSize() const;
+
     void setPointSize(double pointSize);
 
 signals:
@@ -59,6 +69,7 @@ protected:
     QOpenGLBuffer m_vbo; // Protected for direct vbo access
 
     virtual bool updateData();
+
     void init();
 
 private:

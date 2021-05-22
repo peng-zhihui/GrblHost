@@ -34,7 +34,8 @@ PointSegment::PointSegment(PointSegment *ps) : PointSegment(ps->point(), ps->get
     this->m_isFastTraverse = ps->isFastTraverse();
     this->m_isAbsolute = ps->isAbsolute();
 
-    if (ps->isArc()) {
+    if (ps->isArc())
+    {
         this->setArcCenter(ps->center());
         this->setRadius(ps->getRadius());
         this->setIsClockwise(ps->isClockwise());
@@ -48,7 +49,8 @@ PointSegment::PointSegment(const QVector3D *b, int num) : PointSegment()
     this->m_lineNumber = num;
 }
 
-PointSegment::PointSegment(QVector3D *point, int num, QVector3D *center, double radius, bool clockwise) : PointSegment(point, num)
+PointSegment::PointSegment(QVector3D *point, int num, QVector3D *center, double radius, bool clockwise) : PointSegment(
+    point, num)
 {
     this->m_isArc = true;
     this->m_arcProperties = new ArcProperties();
@@ -64,7 +66,8 @@ PointSegment::~PointSegment()
     if (this->m_point != NULL) delete this->m_point;
 }
 
-void PointSegment::setPoint(QVector3D point) {
+void PointSegment::setPoint(QVector3D point)
+{
     this->m_point = new QVector3D(point.x(), point.y(), point.z());
 }
 
@@ -81,7 +84,8 @@ QVector<double> PointSegment::points()
     return points;
 }
 
-void PointSegment::setToolHead(int head) {
+void PointSegment::setToolHead(int head)
+{
     this->m_toolhead = head;
 }
 
@@ -90,15 +94,18 @@ int PointSegment::getToolhead()
     return m_toolhead;
 }
 
-void PointSegment::setLineNumber(int num) {
+void PointSegment::setLineNumber(int num)
+{
     this->m_lineNumber = num;
 }
 
-int PointSegment::getLineNumber() {
+int PointSegment::getLineNumber()
+{
     return m_lineNumber;
 }
 
-void PointSegment::setSpeed(double s) {
+void PointSegment::setSpeed(double s)
+{
     this->m_speed = s;
 }
 
@@ -107,41 +114,50 @@ double PointSegment::getSpeed()
     return m_speed;
 }
 
-void PointSegment::setIsZMovement(bool isZ) {
+void PointSegment::setIsZMovement(bool isZ)
+{
     this->m_isZMovement = isZ;
 }
 
-bool PointSegment::isZMovement() {
+bool PointSegment::isZMovement()
+{
     return m_isZMovement;
 }
 
-void PointSegment::setIsMetric(bool isMetric) {
+void PointSegment::setIsMetric(bool isMetric)
+{
     this->m_isMetric = isMetric;
 }
 
-bool PointSegment::isMetric() {
+bool PointSegment::isMetric()
+{
     return m_isMetric;
 }
 
-void PointSegment::setIsArc(bool isA) {
+void PointSegment::setIsArc(bool isA)
+{
     this->m_isArc = isA;
 }
 
-bool PointSegment::isArc() {
+bool PointSegment::isArc()
+{
     return m_isArc;
 }
 
-void PointSegment::setIsFastTraverse(bool isF) {
+void PointSegment::setIsFastTraverse(bool isF)
+{
     this->m_isFastTraverse = isF;
 }
 
-bool PointSegment::isFastTraverse() {
+bool PointSegment::isFastTraverse()
+{
     return m_isFastTraverse;
 }
 
 // Arc properties.
 
-void PointSegment::setArcCenter(QVector3D *center) {
+void PointSegment::setArcCenter(QVector3D *center)
+{
     if (this->m_arcProperties == NULL) this->m_arcProperties = new ArcProperties();
 
     this->m_arcProperties->center = new QVector3D(center->x(), center->y(), center->z());
@@ -151,7 +167,8 @@ void PointSegment::setArcCenter(QVector3D *center) {
 QVector<double> PointSegment::centerPoints()
 {
     QVector<double> points;
-    if (this->m_arcProperties != NULL && this->m_arcProperties->center != NULL) {
+    if (this->m_arcProperties != NULL && this->m_arcProperties->center != NULL)
+    {
         points.append(m_arcProperties->center->x());
         points.append(m_arcProperties->center->y());
         points.append(m_arcProperties->center->z());
@@ -159,33 +176,41 @@ QVector<double> PointSegment::centerPoints()
     return points;
 }
 
-QVector3D *PointSegment::center() {
+QVector3D *PointSegment::center()
+{
     if (this->m_arcProperties != NULL && this->m_arcProperties->center != NULL) return this->m_arcProperties->center;
     return NULL;
 }
 
-void PointSegment::setIsClockwise(bool clockwise) {
+void PointSegment::setIsClockwise(bool clockwise)
+{
     if (this->m_arcProperties == NULL) this->m_arcProperties = new ArcProperties();
     this->m_arcProperties->isClockwise = clockwise;
 }
 
-bool PointSegment::isClockwise() {
-    if (this->m_arcProperties != NULL && this->m_arcProperties->center != NULL) return this->m_arcProperties->isClockwise;
+bool PointSegment::isClockwise()
+{
+    if (this->m_arcProperties != NULL && this->m_arcProperties->center != NULL)
+        return this->m_arcProperties->isClockwise;
     return false;
 }
 
-void PointSegment::setRadius(double rad) {
+void PointSegment::setRadius(double rad)
+{
     if (this->m_arcProperties == NULL) this->m_arcProperties = new ArcProperties();
     this->m_arcProperties->radius = rad;
 }
 
-double PointSegment::getRadius() {
+double PointSegment::getRadius()
+{
     if (this->m_arcProperties != NULL && this->m_arcProperties->center != NULL) return this->m_arcProperties->radius;
     return 0;
 }
 
-void PointSegment::convertToMetric() {
-    if (this->m_isMetric) {
+void PointSegment::convertToMetric()
+{
+    if (this->m_isMetric)
+    {
         return;
     }
 
@@ -194,13 +219,15 @@ void PointSegment::convertToMetric() {
     this->m_point->setY(this->m_point->y() * 25.4);
     this->m_point->setZ(this->m_point->z() * 25.4);
 
-    if (this->m_isArc && this->m_arcProperties != NULL) {
+    if (this->m_isArc && this->m_arcProperties != NULL)
+    {
         this->m_arcProperties->center->setX(this->m_arcProperties->center->x() * 25.4);
         this->m_arcProperties->center->setY(this->m_arcProperties->center->y() * 25.4);
         this->m_arcProperties->center->setZ(this->m_arcProperties->center->z() * 25.4);
         this->m_arcProperties->radius *= 25.4;
     }
 }
+
 bool PointSegment::isAbsolute() const
 {
     return m_isAbsolute;

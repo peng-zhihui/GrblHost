@@ -16,22 +16,29 @@ public:
     explicit ToolDrawer();
 
     double toolDiameter() const;
+
     void setToolDiameter(double toolDiameter);
 
     double toolLength() const;
+
     void setToolLength(double toolLength);
 
     QVector3D toolPosition() const;
+
     void setToolPosition(const QVector3D &toolPosition);
 
     double rotationAngle() const;
+
     void setRotationAngle(double rotationAngle);
+
     void rotate(double angle);
 
     double toolAngle() const;
+
     void setToolAngle(double toolAngle);
 
     QColor color() const;
+
     void setColor(const QColor &color);
 
 signals:
@@ -51,6 +58,7 @@ private:
     QColor m_color;
 
     double normalizeAngle(double angle);
+
     QVector<VertexData> createCircle(QVector3D center, double radius, int arcs, QVector3D color);
 };
 

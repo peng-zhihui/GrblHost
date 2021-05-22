@@ -13,6 +13,7 @@ public:
     HeightMapBorderDrawer();
 
     QRectF borderRect() const;
+
     void setBorderRect(const QRectF &borderRect);
 
 protected:

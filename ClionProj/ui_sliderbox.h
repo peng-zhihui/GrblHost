@@ -92,8 +92,11 @@ public:
 
 };
 
-namespace Ui {
-    class SliderBox: public Ui_SliderBox {};
+namespace Ui
+{
+    class SliderBox : public Ui_SliderBox
+    {
+    };
 } // namespace Ui
 
 QT_END_NAMESPACE

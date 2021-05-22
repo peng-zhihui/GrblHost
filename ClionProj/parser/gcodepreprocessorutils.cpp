@@ -22,7 +22,8 @@ QString GcodePreprocessorUtils::overrideSpeed(QString command, double speed, dou
 {
     static QRegExp re("[Ff]([0-9.]+)");
 
-    if (re.indexIn(command) != -1) {
+    if (re.indexIn(command) != -1)
+    {
         command.replace(re, QString("F%1").arg(re.cap(1).toDouble() / 100 * speed));
 
         if (original) *original = re.cap(1).toDouble();
@@ -59,7 +60,8 @@ QString GcodePreprocessorUtils::parseComment(QString command)
 
     static QRegExp re("(\\([^\\(\\)]*\\)|;[^;].*)");
 
-    if (re.indexIn(command) != -1) {
+    if (re.indexIn(command) != -1)
+    {
         return re.cap(1);
     }
     return "";
@@ -91,9 +93,10 @@ QList<float> GcodePreprocessorUtils::parseCodes(const QStringList &args, char co
 {
     QList<float> l;
 
-    foreach (QString s, args) {
-        if (s.length() > 0 && s[0].toUpper() == code) l.append(s.mid(1).toDouble());
-    }
+        foreach (QString s, args)
+        {
+            if (s.length() > 0 && s[0].toUpper() == code) l.append(s.mid(1).toDouble());
+        }
 
     return l;
 }
@@ -105,7 +108,8 @@ QList<int> GcodePreprocessorUtils::parseGCodes(QString command)
     QList<int> codes;
     int pos = 0;
 
-    while ((pos = re.indexIn(command, pos)) != -1) {
+    while ((pos = re.indexIn(command, pos)) != -1)
+    {
         codes.append(re.cap(1).toInt());
         pos += re.matchedLength();
     }
@@ -120,7 +124,8 @@ QList<int> GcodePreprocessorUtils::parseMCodes(QString command)
     QList<int> codes;
     int pos = 0;
 
-    while ((pos = re.indexIn(command, pos)) != -1) {
+    while ((pos = re.indexIn(command, pos)) != -1)
+    {
         codes.append(re.cap(1).toInt());
         pos += re.matchedLength();
     }
@@ -131,7 +136,8 @@ QList<int> GcodePreprocessorUtils::parseMCodes(QString command)
 /**
 * Update a point given the arguments of a command.
 */
-QVector3D GcodePreprocessorUtils::updatePointWithCommand(const QString &command, const QVector3D &initial, bool absoluteMode)
+QVector3D
+GcodePreprocessorUtils::updatePointWithCommand(const QString &command, const QVector3D &initial, bool absoluteMode)
 {
     QStringList l = splitCommand(command);
     return updatePointWithCommand(l, initial, absoluteMode);
@@ -148,19 +154,22 @@ QVector3D GcodePreprocessorUtils::updatePointWithCommand(const QStringList &comm
     double z = qQNaN();
     char c;
 
-    for (int i = 0; i < commandArgs.length(); i++) {
-        if (commandArgs.at(i).length() > 0) {
+    for (int i = 0; i < commandArgs.length(); i++)
+    {
+        if (commandArgs.at(i).length() > 0)
+        {
             c = commandArgs.at(i).at(0).toUpper().toLatin1();
-            switch (c) {
-            case 'X':
-                x = commandArgs.at(i).mid(1).toDouble();;
-                break;
-            case 'Y':
-                y = commandArgs.at(i).mid(1).toDouble();;
-                break;
-            case 'Z':
-                z = commandArgs.at(i).mid(1).toDouble();;
-                break;
+            switch (c)
+            {
+                case 'X':
+                    x = commandArgs.at(i).mid(1).toDouble();;
+                    break;
+                case 'Y':
+                    y = commandArgs.at(i).mid(1).toDouble();;
+                    break;
+                case 'Z':
+                    z = commandArgs.at(i).mid(1).toDouble();;
+                    break;
             }
         }
     }
@@ -171,15 +180,18 @@ QVector3D GcodePreprocessorUtils::updatePointWithCommand(const QStringList &comm
 /**
 * Update a point given the new coordinates.
 */
-QVector3D GcodePreprocessorUtils::updatePointWithCommand(const QVector3D &initial, double x, double y, double z, bool absoluteMode)
+QVector3D GcodePreprocessorUtils::updatePointWithCommand(const QVector3D &initial, double x, double y, double z,
+                                                         bool absoluteMode)
 {
     QVector3D newPoint(initial.x(), initial.y(), initial.z());
 
-    if (absoluteMode) {
+    if (absoluteMode)
+    {
         if (!qIsNaN(x)) newPoint.setX(x);
         if (!qIsNaN(y)) newPoint.setY(y);
         if (!qIsNaN(z)) newPoint.setZ(z);
-    } else {
+    } else
+    {
         if (!qIsNaN(x)) newPoint.setX(newPoint.x() + x);
         if (!qIsNaN(y)) newPoint.setY(newPoint.y() + y);
         if (!qIsNaN(z)) newPoint.setZ(newPoint.z() + z);
@@ -188,7 +200,9 @@ QVector3D GcodePreprocessorUtils::updatePointWithCommand(const QVector3D &initia
     return newPoint;
 }
 
-QVector3D GcodePreprocessorUtils::updateCenterWithCommand(QStringList commandArgs, QVector3D initial, QVector3D nextPoint, bool absoluteIJKMode, bool clockwise)
+QVector3D
+GcodePreprocessorUtils::updateCenterWithCommand(QStringList commandArgs, QVector3D initial, QVector3D nextPoint,
+                                                bool absoluteIJKMode, bool clockwise)
 {
     double i = qQNaN();
     double j = qQNaN();
@@ -196,28 +210,31 @@ QVector3D GcodePreprocessorUtils::updateCenterWithCommand(QStringList commandArg
     double r = qQNaN();
     char c;
 
-    foreach (QString t, commandArgs)
-    {
-        if (t.length() > 0) {
-            c = t[0].toUpper().toLatin1();
-            switch (c) {
-            case 'I':
-                i = t.mid(1).toDouble();
-                break;
-            case 'J':
-                j = t.mid(1).toDouble();
-                break;
-            case 'K':
-                k = t.mid(1).toDouble();
-                break;
-            case 'R':
-                r = t.mid(1).toDouble();
-                break;
+        foreach (QString t, commandArgs)
+        {
+            if (t.length() > 0)
+            {
+                c = t[0].toUpper().toLatin1();
+                switch (c)
+                {
+                    case 'I':
+                        i = t.mid(1).toDouble();
+                        break;
+                    case 'J':
+                        j = t.mid(1).toDouble();
+                        break;
+                    case 'K':
+                        k = t.mid(1).toDouble();
+                        break;
+                    case 'R':
+                        r = t.mid(1).toDouble();
+                        break;
+                }
             }
         }
-    }
 
-    if (qIsNaN(i) && qIsNaN(j) && qIsNaN(k)) {
+    if (qIsNaN(i) && qIsNaN(j) && qIsNaN(k))
+    {
         return convertRToCenter(initial, nextPoint, r, absoluteIJKMode, clockwise);
     }
 
@@ -228,11 +245,13 @@ QString GcodePreprocessorUtils::generateG1FromPoints(QVector3D start, QVector3D 
 {
     QString sb("G1");
 
-    if (absoluteMode) {
+    if (absoluteMode)
+    {
         if (!qIsNaN(end.x())) sb.append("X" + QString::number(end.x(), 'f', precision));
         if (!qIsNaN(end.y())) sb.append("Y" + QString::number(end.y(), 'f', precision));
         if (!qIsNaN(end.z())) sb.append("Z" + QString::number(end.z(), 'f', precision));
-    } else {
+    } else
+    {
         if (!qIsNaN(end.x())) sb.append("X" + QString::number(end.x() - start.x(), 'f', precision));
         if (!qIsNaN(end.y())) sb.append("Y" + QString::number(end.y() - start.y(), 'f', precision));
         if (!qIsNaN(end.z())) sb.append("Z" + QString::number(end.z() - start.z(), 'f', precision));
@@ -246,7 +265,8 @@ QString GcodePreprocessorUtils::generateG1FromPoints(QVector3D start, QVector3D 
 //* This command is about the same speed as the string.split(" ") command,
 //* but might be a little faster using precompiled regex.
 //*/
-QStringList GcodePreprocessorUtils::splitCommand(const QString &command) {
+QStringList GcodePreprocessorUtils::splitCommand(const QString &command)
+{
     QStringList l;
     bool readNumeric = false;
     QString sb;
@@ -255,15 +275,18 @@ QStringList GcodePreprocessorUtils::splitCommand(const QString &command) {
     const char *cmd = ba.constData(); // Direct access to string data
     char c;
 
-    for (int i = 0; i < command.length(); i++) {
+    for (int i = 0; i < command.length(); i++)
+    {
         c = cmd[i];
 
-        if (readNumeric && !isDigit(c) && c != '.') {
+        if (readNumeric && !isDigit(c) && c != '.')
+        {
             readNumeric = false;
             l.append(sb);
             sb.clear();
             if (isLetter(c)) sb.append(c);
-        } else if (isDigit(c) || c == '.' || c == '-') {
+        } else if (isDigit(c) || c == '.' || c == '-')
+        {
             sb.append(c);
             readNumeric = true;
         } else if (isLetter(c)) sb.append(c);
@@ -302,10 +325,10 @@ double GcodePreprocessorUtils::parseCoord(QStringList argList, char c)
 //        if (argList[i].length() > 0 && argList[i][0].toUpper() == c) return argList[i].mid(1).toDouble();
 //    }
 
-    foreach (QString t, argList)
-    {
-        if (t.length() > 0 && t[0].toUpper() == c) return t.mid(1).toDouble();
-    }
+        foreach (QString t, argList)
+        {
+            if (t.length() > 0 && t[0].toUpper() == c) return t.mid(1).toDouble();
+        }
     return qQNaN();
 }
 
@@ -315,7 +338,9 @@ double GcodePreprocessorUtils::parseCoord(QStringList argList, char c)
 //    return l;
 //}
 
-QVector3D GcodePreprocessorUtils::convertRToCenter(QVector3D start, QVector3D end, double radius, bool absoluteIJK, bool clockwise) {
+QVector3D GcodePreprocessorUtils::convertRToCenter(QVector3D start, QVector3D end, double radius, bool absoluteIJK,
+                                                   bool clockwise)
+{
     double R = radius;
     QVector3D center;
 
@@ -323,14 +348,16 @@ QVector3D GcodePreprocessorUtils::convertRToCenter(QVector3D start, QVector3D en
     double y = end.y() - start.y();
 
     double h_x2_div_d = 4 * R * R - x * x - y * y;
-    if (h_x2_div_d < 0) { qDebug() << "Error computing arc radius."; }
+    if (h_x2_div_d < 0)
+    { qDebug() << "Error computing arc radius."; }
     h_x2_div_d = (-sqrt(h_x2_div_d)) / hypot(x, y);
 
     if (!clockwise) h_x2_div_d = -h_x2_div_d;
 
     // Special message from gcoder to software for which radius
     // should be used.
-    if (R < 0) {
+    if (R < 0)
+    {
         h_x2_div_d = -h_x2_div_d;
         // TODO: Places that use this need to run ABS on radius.
         radius = -radius;
@@ -339,10 +366,12 @@ QVector3D GcodePreprocessorUtils::convertRToCenter(QVector3D start, QVector3D en
     double offsetX = 0.5 * (x - (y * h_x2_div_d));
     double offsetY = 0.5 * (y + (x * h_x2_div_d));
 
-    if (!absoluteIJK) {
+    if (!absoluteIJK)
+    {
         center.setX(start.x() + offsetX);
         center.setY(start.y() + offsetY);
-    } else {
+    } else
+    {
         center.setX(offsetX);
         center.setY(offsetY);
     }
@@ -353,31 +382,39 @@ QVector3D GcodePreprocessorUtils::convertRToCenter(QVector3D start, QVector3D en
 /**
 * Return the angle in radians when going from start to end.
 */
-double GcodePreprocessorUtils::getAngle(QVector3D start, QVector3D end) {
+double GcodePreprocessorUtils::getAngle(QVector3D start, QVector3D end)
+{
     double deltaX = end.x() - start.x();
     double deltaY = end.y() - start.y();
 
     double angle = 0.0;
 
-    if (deltaX != 0) { // prevent div by 0
+    if (deltaX != 0)
+    { // prevent div by 0
         // it helps to know what quadrant you are in
-        if (deltaX > 0 && deltaY >= 0) { // 0 - 90
+        if (deltaX > 0 && deltaY >= 0)
+        { // 0 - 90
             angle = atan(deltaY / deltaX);
-        } else if (deltaX < 0 && deltaY >= 0) { // 90 to 180
+        } else if (deltaX < 0 && deltaY >= 0)
+        { // 90 to 180
             angle = M_PI - fabs(atan(deltaY / deltaX));
-        } else if (deltaX < 0 && deltaY < 0) { // 180 - 270
+        } else if (deltaX < 0 && deltaY < 0)
+        { // 180 - 270
             angle = M_PI + fabs(atan(deltaY / deltaX));
-        } else if (deltaX > 0 && deltaY < 0) { // 270 - 360
+        } else if (deltaX > 0 && deltaY < 0)
+        { // 270 - 360
             angle = M_PI * 2 - fabs(atan(deltaY / deltaX));
         }
-    }
-    else {
+    } else
+    {
         // 90 deg
-        if (deltaY > 0) {
+        if (deltaY > 0)
+        {
             angle = M_PI / 2.0;
         }
-        // 270 deg
-        else {
+            // 270 deg
+        else
+        {
             angle = M_PI * 3.0 / 2.0;
         }
     }
@@ -390,20 +427,26 @@ double GcodePreprocessorUtils::calculateSweep(double startAngle, double endAngle
     double sweep;
 
     // Full circle
-    if (startAngle == endAngle) {
+    if (startAngle == endAngle)
+    {
         sweep = (M_PI * 2);
         // Arcs
-    } else {
+    } else
+    {
         // Account for full circles and end angles of 0/360
-        if (endAngle == 0) {
+        if (endAngle == 0)
+        {
             endAngle = M_PI * 2;
         }
         // Calculate distance along arc.
-        if (!isCw && endAngle < startAngle) {
+        if (!isCw && endAngle < startAngle)
+        {
             sweep = ((M_PI * 2 - startAngle) + endAngle);
-        } else if (isCw && endAngle > startAngle) {
+        } else if (isCw && endAngle > startAngle)
+        {
             sweep = ((M_PI * 2 - endAngle) + startAngle);
-        } else {
+        } else
+        {
             sweep = fabs(endAngle - startAngle);
         }
     }
@@ -414,22 +457,26 @@ double GcodePreprocessorUtils::calculateSweep(double startAngle, double endAngle
 /**
 * Generates the points along an arc including the start and end points.
 */
-QList<QVector3D> GcodePreprocessorUtils::generatePointsAlongArcBDring(PointSegment::planes plane, QVector3D start, QVector3D end, QVector3D center, bool clockwise, double R, double minArcLength, double arcPrecision, bool arcDegreeMode)
+QList<QVector3D>
+GcodePreprocessorUtils::generatePointsAlongArcBDring(PointSegment::planes plane, QVector3D start, QVector3D end,
+                                                     QVector3D center, bool clockwise, double R, double minArcLength,
+                                                     double arcPrecision, bool arcDegreeMode)
 {
     double radius = R;
 
     // Rotate vectors according to plane
     QMatrix4x4 m;
     m.setToIdentity();
-    switch (plane) {
-    case PointSegment::XY:
-        break;
-    case PointSegment::ZX:
-        m.rotate(90, 1.0, 0.0, 0.0);
-        break;
-    case PointSegment::YZ:
-        m.rotate(-90, 0.0, 1.0, 0.0);
-        break;
+    switch (plane)
+    {
+        case PointSegment::XY:
+            break;
+        case PointSegment::ZX:
+            m.rotate(90, 1.0, 0.0, 0.0);
+            break;
+        case PointSegment::YZ:
+            m.rotate(-90, 0.0, 1.0, 0.0);
+            break;
     }
     start = m * start;
     end = m * end;
@@ -439,8 +486,9 @@ QList<QVector3D> GcodePreprocessorUtils::generatePointsAlongArcBDring(PointSegme
     if (qIsNaN(center.length())) return QList<QVector3D>();
 
     // Calculate radius if necessary.
-    if (radius == 0) {
-        radius = sqrt(pow((double)(start.x() - center.x()), 2.0) + pow((double)(end.y() - center.y()), 2.0));
+    if (radius == 0)
+    {
+        radius = sqrt(pow((double) (start.x() - center.x()), 2.0) + pow((double) (end.y() - center.y()), 2.0));
     }
 
     double startAngle = getAngle(center, start);
@@ -458,13 +506,16 @@ QList<QVector3D> GcodePreprocessorUtils::generatePointsAlongArcBDring(PointSegme
 
     int numPoints;
 
-    if (arcDegreeMode && arcPrecision > 0) {
+    if (arcDegreeMode && arcPrecision > 0)
+    {
         numPoints = qMax(1.0, sweep / (M_PI * arcPrecision / 180));
-    } else {
-        if (arcPrecision <= 0 && minArcLength > 0) {
+    } else
+    {
+        if (arcPrecision <= 0 && minArcLength > 0)
+        {
             arcPrecision = minArcLength;
         }
-        numPoints = (int)ceil(arcLength/arcPrecision);
+        numPoints = (int) ceil(arcLength / arcPrecision);
     }
 
     return generatePointsAlongArcBDring(plane, start, end, center, clockwise, radius, startAngle, sweep, numPoints);
@@ -473,23 +524,25 @@ QList<QVector3D> GcodePreprocessorUtils::generatePointsAlongArcBDring(PointSegme
 /**
 * Generates the points along an arc including the start and end points.
 */
-QList<QVector3D> GcodePreprocessorUtils::generatePointsAlongArcBDring(PointSegment::planes plane, QVector3D p1, QVector3D p2,
-                                                                      QVector3D center, bool isCw,
-                                                                      double radius, double startAngle,
-                                                                      double sweep, int numPoints)
+QList<QVector3D>
+GcodePreprocessorUtils::generatePointsAlongArcBDring(PointSegment::planes plane, QVector3D p1, QVector3D p2,
+                                                     QVector3D center, bool isCw,
+                                                     double radius, double startAngle,
+                                                     double sweep, int numPoints)
 {
     // Prepare rotation matrix to restore plane
     QMatrix4x4 m;
     m.setToIdentity();
-    switch (plane) {
-    case PointSegment::XY:
-        break;
-    case PointSegment::ZX:
-        m.rotate(-90, 1.0, 0.0, 0.0);
-        break;
-    case PointSegment::YZ:
-        m.rotate(90, 0.0, 1.0, 0.0);
-        break;
+    switch (plane)
+    {
+        case PointSegment::XY:
+            break;
+        case PointSegment::ZX:
+            m.rotate(-90, 1.0, 0.0, 0.0);
+            break;
+        case PointSegment::YZ:
+            m.rotate(90, 0.0, 1.0, 0.0);
+            break;
     }
 
     QVector3D lineEnd(p2.x(), p2.y(), p1.z());
@@ -497,20 +550,24 @@ QList<QVector3D> GcodePreprocessorUtils::generatePointsAlongArcBDring(PointSegme
     double angle;
 
     // Calculate radius if necessary.
-    if (radius == 0) {
-        radius = sqrt(pow((double)(p1.x() - center.x()), 2.0) + pow((double)(p1.y() - center.y()), 2.0));
+    if (radius == 0)
+    {
+        radius = sqrt(pow((double) (p1.x() - center.x()), 2.0) + pow((double) (p1.y() - center.y()), 2.0));
     }
 
     double zIncrement = (p2.z() - p1.z()) / numPoints;
     for (int i = 1; i < numPoints; i++)
     {
-        if (isCw) {
+        if (isCw)
+        {
             angle = (startAngle - i * sweep / numPoints);
-        } else {
+        } else
+        {
             angle = (startAngle + i * sweep / numPoints);
         }
 
-        if (angle >= M_PI * 2) {
+        if (angle >= M_PI * 2)
+        {
             angle = angle - M_PI * 2;
         }
 

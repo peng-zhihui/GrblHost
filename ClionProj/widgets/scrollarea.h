@@ -11,30 +11,40 @@
 
 class ScrollArea : public QScrollArea
 {
-    Q_OBJECT
+Q_OBJECT
 
 public:
     explicit ScrollArea(QWidget *parent = 0);
 
     QSize sizeHint() const;
+
     void setWidget(QWidget *widget);
+
     void updateMinimumWidth();
 
 public slots:
 
 signals:
+
     void sizeHintRequest();
 
 protected:
     void resizeEvent(QResizeEvent *re);
+
     void mouseMoveEvent(QMouseEvent *me);
+
     void mousePressEvent(QMouseEvent *me);
+
     void mouseReleaseEvent(QMouseEvent *me);
 
 private slots:
+
     void onContentSizeChanged(QSize newSize);
+
     void onVerticalScrollBarValueChanged(int newValue);
+
     void onScroll(int dx, int dy);
+
     void onPressed();
 
 private:

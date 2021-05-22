@@ -10,13 +10,15 @@ HeightMapTableModel::HeightMapTableModel(QObject *parent) : QAbstractTableModel(
 
 void HeightMapTableModel::resize(int cols, int rows)
 {
-    foreach (QVector<double> row, m_data) row.clear();
+        foreach (QVector<double> row, m_data) row.clear();
 
     m_data.clear();
 
-    for (int i = 0; i < rows; i++) {
+    for (int i = 0; i < rows; i++)
+    {
         QVector<double> row;
-        for (int j = 0; j < cols; j++) {
+        for (int j = 0; j < cols; j++)
+        {
             row.append(qQNaN());
         }
         m_data.append(row);
@@ -29,15 +31,18 @@ QVariant HeightMapTableModel::data(const QModelIndex &index, int role) const
 
     if (index.row() >= m_data.count() || index.column() >= m_data[0].count()) return QVariant();
 
-    if (role == Qt::DisplayRole || role == Qt::EditRole) {
+    if (role == Qt::DisplayRole || role == Qt::EditRole)
+    {
         return QString::number(m_data[(m_data.count() - 1) - index.row()][index.column()], 'f', 3);
     }
 
-    if (role == Qt::UserRole) {
+    if (role == Qt::UserRole)
+    {
         return m_data[index.row()][index.column()];
     }
 
-    if (role == Qt::TextAlignmentRole) {
+    if (role == Qt::TextAlignmentRole)
+    {
         return Qt::AlignCenter;
     }
 

@@ -37,21 +37,23 @@ QSize ScrollArea::sizeHint() const
 
 void ScrollArea::setWidget(QWidget *widget)
 {
-    connect(static_cast<Widget*>(widget), SIGNAL(sizeChanged(QSize)), this, SLOT(onContentSizeChanged(QSize)));
+    connect(static_cast<Widget *>(widget), SIGNAL(sizeChanged(QSize)), this, SLOT(onContentSizeChanged(QSize)));
     QScrollArea::setWidget(widget);
 }
 
 void ScrollArea::updateMinimumWidth()
 {
     m_width = 0;
-    QList<GroupBox*> list = this->widget()->findChildren<GroupBox*>();
-    foreach (GroupBox *box, list) {
-        connect(box, SIGNAL(mouseMoved(int,int)), this, SLOT(onScroll(int,int)));
-        connect(box, SIGNAL(mousePressed()), this, SLOT(onPressed()));
-        m_width = qMax<int>(m_width, box->sizeHint().width()
-                        + static_cast<QWidget*>(box->parent())->layout()->contentsMargins().left()
-                        + static_cast<QWidget*>(box->parent())->layout()->contentsMargins().right()); // 1 * margin
-    }
+    QList<GroupBox *> list = this->widget()->findChildren<GroupBox *>();
+        foreach (GroupBox *box, list)
+        {
+            connect(box, SIGNAL(mouseMoved(int, int)), this, SLOT(onScroll(int, int)));
+            connect(box, SIGNAL(mousePressed()), this, SLOT(onPressed()));
+            m_width = qMax<int>(m_width, box->sizeHint().width()
+                                         + static_cast<QWidget *>(box->parent())->layout()->contentsMargins().left()
+                                         +
+                                         static_cast<QWidget *>(box->parent())->layout()->contentsMargins().right()); // 1 * margin
+        }
     onContentSizeChanged(QSize());
 }
 
@@ -66,7 +68,8 @@ void ScrollArea::mouseMoveEvent(QMouseEvent *me)
 {
     QScrollArea::mouseMoveEvent(me);
 
-    if (!m_pressedPos.isNull()) {
+    if (!m_pressedPos.isNull())
+    {
         QPoint delta = me->globalPos() - m_pressedPos;
         onScroll(delta.x(), delta.y());
     }
@@ -107,7 +110,7 @@ void ScrollArea::onScroll(int dx, int dy)
     Q_UNUSED(dx)
 
     QScrollBar *bar = this->verticalScrollBar();
-    int delta = (double)dy / (this->sizeHint().height() - this->height()) * (bar->maximum() - bar->minimum());
+    int delta = (double) dy / (this->sizeHint().height() - this->height()) * (bar->maximum() - bar->minimum());
 
     bar->setValue(m_pressedValue - delta);
 }
@@ -123,7 +126,7 @@ void ScrollArea::updateBorders()
 #ifdef GLES
     return;
 #else
-    QScrollBar* bar = this->verticalScrollBar();
+    QScrollBar *bar = this->verticalScrollBar();
     bool fitted = this->geometry().height() > this->widget()->sizeHint().height();
 
     this->setProperty("topBorder", bar->value() > bar->minimum() && !fitted);
